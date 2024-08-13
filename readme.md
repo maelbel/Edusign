@@ -1,0 +1,2 @@
+# Explanation
+At the beginning of my master's year, I had to redevelop the Edusign application for a week but with the technologies I knew at that time. I continue this project from time to time since I stopped this first year of master's.

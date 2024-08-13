@@ -1,10 +1,12 @@
 <?php
 session_start();
 
-$db = new PDO('mysql:host=localhost;dbname=id21291375_edusign;charset=utf8', 'id21291375_mael', 'Corsica2b*');
+require '../model/db_connect.php';
+
+$pdo->exec("USE edusign");
 
 $sqlQuery = 'SELECT * FROM `es_classroom` WHERE id = '.$_REQUEST['c_id'];
-$statement = $db->prepare($sqlQuery);
+$statement = $pdo->prepare($sqlQuery);
 $statement->execute();
 $classroom = $statement->fetch();
 ?>
@@ -27,7 +29,7 @@ $classroom = $statement->fetch();
             <div class="row">
                 <div class="col-9">
                     <div class="h4">Liste des participants 
-                        <?php if($_SESSION['group_user'] == 2): ?>
+                        <?php if($_SESSION['role'] == "teacher"): ?>
                             <a class="btn btn-light border ms-2" onclick="location.reload()">
                                 <i class="fa-solid fa-arrows-rotate"></i>
                             </a>
@@ -45,25 +47,25 @@ $classroom = $statement->fetch();
                         
                     <?php 
                         $sqlQuery = 'SELECT * FROM es_presence WHERE classroom_id = '.$classroom['id'];
-                        $statement = $db->prepare($sqlQuery);
+                        $statement = $pdo->prepare($sqlQuery);
                         $statement->execute();
                         $presences = $statement->fetchAll();
 
                         foreach($presences as $presence) { 
                             $sqlQuery = 'SELECT * FROM es_user WHERE id = '.$presence['student_id'];
-                            $statement = $db->prepare($sqlQuery);
+                            $statement = $pdo->prepare($sqlQuery);
                             $statement->execute();
                             $student = $statement->fetch();
 
                             $msg_statut = ($presence['statut'])?'Présent':'Absent';
                             
-                            echo "<tr><td>".$student['name']."</td><td>".$student['lastname']."</td><td class='ms-5'>".$msg_statut."</td></tr>";
+                            echo "<tr><td>".$student['firstname']."</td><td>".$student['lastname']."</td><td class='ms-5'>".$msg_statut."</td></tr>";
                         } 
                     ?>
                     </table>
                 </div>
 
-                <?php if($_SESSION['group_user'] == 2): ?>
+                <?php if($_SESSION['role'] == "teacher"): ?>
                 <div class="col-3 text-center">
                     <a href="" id="link-qrcode"><img style="display: none;" src="./src/img/tmp/qrcode/qrcode.png" class="img-fluid w-100" alt="qrcode" title="qrcode" id="qrcode"/></a>
                 </div>
@@ -74,7 +76,7 @@ $classroom = $statement->fetch();
         <script src="./src/js/fontawesome/all.min.js"></script>
         <script src="./src/js/global.js"></script>
         <script type="text/javascript">
-            <?php if($_SESSION['group_user'] == 2): ?>
+            <?php if($_SESSION['role'] == "teacher"): ?>
                 generateQrCode(<?php echo $classroom['id'] ?>)
                 setInterval(function(){
                     generateQrCode(<?php echo $classroom['id'] ?>)

@@ -1,2 +1,6 @@
-/src/img/tmp
-.htaccess
+src/img/tmp
+src/css/bootstrap
+src/css/fontawesome
+src/js/bootstrap
+src/js/fontawesome
+src/js/jquery.js

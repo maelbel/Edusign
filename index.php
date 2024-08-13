@@ -1,12 +1,13 @@
 <?php
 session_start();
 
+require 'model/create_database.php';
+
 try {
-	$db = new PDO('mysql:host=localhost;dbname=id21291375_edusign;charset=utf8', 'id21291375_mael', 'Corsica2b*');
-    
+
     // On récupère tous les utilisateurs
     $sqlQuery = 'SELECT * FROM es_user';
-    $recipesStatement = $db->prepare($sqlQuery);
+    $recipesStatement = $pdo->prepare($sqlQuery);
     $recipesStatement->execute();
     $users = $recipesStatement->fetchAll();
 
@@ -18,9 +19,12 @@ try {
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="./src/css/bootstrap/bootstrap.css">
-        <link rel="stylesheet" href="./src/css/fontawesome/all.min.css">
-        <link rel="stylesheet" href="./src/css/style.css">
+        <link href="./src/css/fontawesome/fontawesome.css" rel="stylesheet" />
+        <link href="./src/css/fontawesome/brands.css" rel="stylesheet" />
+        <link href="./src/css/fontawesome/solid.css" rel="stylesheet" />
+
+        <link href="./src/css/bootstrap/bootstrap.css" rel="stylesheet" />
+        <link href="./src/css/style.css" rel="stylesheet" />
     </head>
     <body>
     <?php
@@ -28,28 +32,31 @@ try {
         // Validation du formulaire
         if (isset($_POST['email']) && isset($_POST['password'])) {
             foreach ($users as $user) {
-                if (
-                    $user['email'] === $_POST['email'] &&
-                    password_verify($_POST['password'], $user['password'])
-                ) {
-                    $_SESSION = [
-                        'id' => $user['id'],
-                        'email' => $user['email'],
-                        'name' => $user['name'],
-                        'lastname' => $user['lastname'],
-                        'group_user' => $user['group_user']
-                    ];
+                if ($user['email'] === $_POST['email']) {
+                    if(password_verify($_POST["password"], $user['password'])) {
+                        $_SESSION = [
+                            'id' => $user['id'],
+                            'email' => $user['email'],
+                            'firstname' => $user['firstname'],
+                            'lastname' => $user['lastname'],
+                            'role' => $user['role']
+                        ];
+                    } else {
+                        $errorMessage = sprintf('Votre mot de passe est incorrect : (%s/%s)',
+                            $_POST['email'],
+                            $_POST['password']
+                        );
+                    }
                 } else {
-                    $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
-                        $_POST['email'],
-                        $_POST['password']
+                    $errorMessage = sprintf("Le compte %s n'existe pas",
+                        $_POST['email']
                     );
                 }
             }
         }
         ?>
 
-        <!--
+                <!--
         Si utilisateur/trice est non identifié(e), on affiche le formulaire
         -->
         <?php if(!isset($_SESSION) || sizeof($_SESSION) == 0): ?>
@@ -84,23 +91,9 @@ try {
             <div class="container mt-5">
                 <div class="row">
                     <div class="alert alert-success mb-0" role="alert">
-                        <span class="h3">Bonjour <?php echo $_SESSION['name'].' '.$_SESSION['lastname']; ?> !</span>
+                        <span class="h3">Bonjour <?php echo $_SESSION['firstname'].' '.$_SESSION['lastname']; ?> !</span>
                         <br/>
-                        <span class="text-muted">Espace 
-                            <?php switch($_SESSION['group_user']) {
-                                        case 0:
-                                            echo 'administrateur';
-                                            break;
-                                        case 1:
-                                            echo 'étudiant';
-                                            break;
-                                        case 2:
-                                            echo 'professeur';
-                                            break;
-                                        default:
-                                            echo 'personnel';
-                                            break;
-                            } ?>
+                        <span class="text-muted">Espace <?php echo $_SESSION['role'] ?>
                         </span>
                     </div>
                     <form action="controller/logout.php" method="post" class="p-0 mb-5">
@@ -108,15 +101,15 @@ try {
                     </form>
                 </div>
                 <div class="row">
-                    <?php if($_SESSION['group_user'] == 0): ?>
+                    <?php if($_SESSION['role'] == 'admin'): ?>
                     
                     <span class="h4">Créer un compte</span>
                     
                     <form action="controller/createAccount.php" method="post" class="mb-5">
                         <div class="row mb-3">
                             <div class="col-6">
-                            <label for="name" class="form-label">Prénom</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <label for="firstname" class="form-label">Prénom</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname">
                             </div>
                             <div class="col-6">
                             <label for="lastname" class="form-label">Nom</label>
@@ -132,11 +125,11 @@ try {
                             <input type="password" class="form-control" id="password" name="password">
                         </div>
                         <div class="mb-3">
-                            <label for="group_user">Groupe de l'utilisateur:</label>
-                            <select name="group_user" id="group_user">
-                                <option value="1">Étudiant</option>
-                                <option value="0">Administrateur</option>
-                                <option value="2">Professeur</option>
+                            <label for="role">Groupe de l'utilisateur:</label>
+                            <select name="role" id="role">
+                                <option value="student">Étudiant</option>
+                                <option value="admin">Administrateur</option>
+                                <option value="teacher">Professeur</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Créer un compte</button>
@@ -159,23 +152,10 @@ try {
                         <?php foreach($users as $user){ ?>
                             <tr>
                                 <th scope="row"><?php echo $user['id']; ?></th>
-                                <td><?php echo $user['name']; ?></td>
+                                <td><?php echo $user['firstname']; ?></td>
                                 <td><?php echo $user['lastname']; ?></td>
                                 <td><?php echo $user['email']; ?></td>
-                                <td><?php switch($user['group_user']) {
-                                        case 0:
-                                            echo 'Administrateur';
-                                            break;
-                                        case 1:
-                                            echo 'Étudiant';
-                                            break;
-                                        case 2:
-                                            echo 'Professeur';
-                                            break;
-                                        default:
-                                            echo 'Aucun';
-                                            break;
-                                } ?></td>
+                                <td><?php echo $user['role']; ?></td>
                                 <td>
                                     <button id="modifyAccountBtn" type="button" class="btn btn-primary text-white py-2 px-3" data-bs-toggle="modal" data-bs-target="#modifyAccountModal">
                                         <i class="fa-solid fa-pen"></i>
@@ -192,17 +172,17 @@ try {
                     <?php endif; ?>
 
                     <?php 
-                        $id_temp = ($_SESSION['group_user'] == 2)?'teacher_id':'students_id';
+                        $id_temp = ($_SESSION['role'] == "teacher")?'teacher_id':'students_id';
                         // On récupère tous les cours de la personne connectée
                         $sqlQuery = 'SELECT * FROM es_classroom WHERE '.$id_temp.' = '.$_SESSION['id'];
-                        $statement = $db->prepare($sqlQuery);
+                        $statement = $pdo->prepare($sqlQuery);
                         $statement->execute();
                         $classrooms = $statement->fetchAll();
 
                         foreach($classrooms as $classroom){ ?>
                             <div class="row mb-3">
-                                <div class="<?php echo ($_SESSION['group_user'] == 2)? 'col-10' : 'col-12'; ?>">
-                                    <a class="btn btn-light text-start w-100" href="classroom.php?c_id=<?php echo $classroom['id'] ?>">
+                                <div class="<?php echo ($_SESSION['role'] == "teacher")? 'col-10' : 'col-12'; ?>">
+                                    <a class="btn btn-light text-start w-100" href="./view/classroom.php?c_id=<?php echo $classroom['id'] ?>">
                                         <div class="col-12">
                                             <div class="h4"><?php echo $classroom['name']; ?></div>
                                             <span class="text-muted"><?php echo $classroom['room']; ?></span>
@@ -210,7 +190,7 @@ try {
                                     </a>
                                 </div>
                                 
-                                <?php if($_SESSION['group_user'] == 2): ?>
+                                <?php if($_SESSION['role'] == "teacher"): ?>
                                     <div class="col-1">
                                         <button id="modifyClassBtn" type="button" class="btn btn-primary text-white w-100 p-4" data-bs-toggle="modal" data-bs-target="#modifyClassModal">
                                             <i class="fa-solid fa-pen"></i>
@@ -237,9 +217,9 @@ try {
                                                             </div>
                                                             <div class="mb-3">
                                                                 <?php foreach($users as $user) { 
-                                                                        if($user['group_user']==1){ ?>
+                                                                        if($user['role'] == "student"){ ?>
                                                                             <input type="checkbox" name="<?php echo $user['id'] ?>" id="<?php echo $user['id'] ?>" <?php echo (in_array($user['id'], explode("-", $classroom['students_id'])))? 'checked' : '' ?>/>
-                                                                            <label for="<?php echo $user['id'] ?>"><?php echo $user['name'].' '.$user['lastname'] ?></label>
+                                                                            <label for="<?php echo $user['id'] ?>"><?php echo $user['firstname'].' '.$user['lastname'] ?></label>
                                                                 <?php }} ?>
                                                             </div>
                                                         </div>
@@ -261,7 +241,7 @@ try {
                             </div>
                     <?php } ?>
 
-                    <?php if($_SESSION['group_user'] == 2): ?>
+                    <?php if($_SESSION['role'] == "teacher"): ?>
                         <!-- Button trigger modal -->
                         <button id="addClassBtn" type="button" class="btn btn-light border" data-bs-toggle="modal" data-bs-target="#addClassModal">
                             <i class="fa-solid fa-plus"></i>
@@ -287,9 +267,9 @@ try {
                                             </div>
                                             <div class="mb-3">
                                                 <?php foreach($users as $user) { 
-                                                        if($user['group_user']==1){ ?>
+                                                        if($user['role'] == "student"){ ?>
                                                             <input type="checkbox" name="<?php echo $user['id'] ?>" id="<?php echo $user['id'] ?>"/>
-                                                            <label for="<?php echo $user['id'] ?>"><?php echo $user['name'].' '.$user['lastname'] ?></label>
+                                                            <label for="<?php echo $user['id'] ?>"><?php echo $user['firstname'].' '.$user['lastname'] ?></label>
                                                 <?php }} ?>
                                             </div>
                                         </div>

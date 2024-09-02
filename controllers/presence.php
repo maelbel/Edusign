@@ -6,10 +6,6 @@ if(!$_SESSION){
     die();
 }
 
-require '../model/db_connect.php';
-
-$pdo->exec("USE edusign");
-
 try {
     $sqlQuery = 'SELECT * FROM `es_classroom` WHERE id = '.$_REQUEST['c_id'].' AND token="'.$_REQUEST['token'].'"';
     $statement = $pdo->prepare($sqlQuery);

@@ -35,6 +35,21 @@ class CoursesController {
         }
     }
 
+    public function createCourse($data){
+        $this->course->createCourse($data);
+        header('Location: /edusign/courses');
+    }
+
+    public function updateCourse($data){
+        $this->course->updateCourse($data);
+        header('Location: /edusign/courses');
+    }
+
+    public function deleteCourse($data){
+        $this->course->deleteCourseById($data['course_id']);
+        header('Location: /edusign/courses');
+    }
+
     // Arrondir à la demi-heure la plus proche
     function roundToNearestHalfHour($dateTime) {
         $minutes = (int)$dateTime->format('i');

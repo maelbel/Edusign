@@ -8,8 +8,13 @@ class CourseModel {
     }
 
     public function createCourse($data) {
-        $stmt = $this->pdo->prepare("INSERT INTO es_course (name, room, token, date, duration) VALUES (:name, :room, :token, :date, :duration)");
-        $stmt->execute(['name' => $data['name'], 'room' => $data['room'], 'token' => null, 'date' => $data['date'], 'duration' => $data['duration']]);
+        $stmt = $this->pdo->prepare("INSERT INTO es_course (name, room, token, start_date, end_date) VALUES (:name, :room, :token, :start_date, :end_date)");
+        $stmt->execute(['name' => $data['name'], 'room' => $data['room'], 'token' => null, 'start_date' => $data['start_date'], 'end_date' => $data['end_date']]);
+    }
+
+    public function updateCourse($data) {
+        $stmt = $this->pdo->prepare("UPDATE es_course SET name = :name, room = :room, start_date = :start_date, end_date = :end_date WHERE id = :id");
+        $stmt->execute(['name' => $data['name'], 'room' => $data['room'], 'start_date' => $data['start_date'], 'end_date' => $data['end_date'], 'id' => $data['course_id']]);
     }
 
     public function getCourseById($id) {

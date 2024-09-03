@@ -6,8 +6,10 @@ $routes = [
     'logout' => 'AuthController@logout',
     'account' => 'AccountController@init',
     'accounts' => 'AccountsController@init',
+    'updateUser' => 'AccountsController@updateUser',
+    'deleteUser' => 'AccountsController@deleteUser',
     'courses' => 'CoursesController@init',
-    'classes' => 'ClassesController@init',
+    'classes' => 'ClassesController@init'
 ];
 
 // Obtenir l'URL de la requête

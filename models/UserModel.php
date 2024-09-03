@@ -8,9 +8,13 @@ class UserModel {
     }
 
     public function createUser($data) {
-        $password = password_hash($data['password'], PASSWORD_BCRYPT);
-        $stmt = $this->pdo->prepare("INSERT INTO es_user (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)");
-        $stmt->execute(['firstname' => $data['firstname'], 'lastname' => $data['lastname'], 'email' => $data['email'], 'password' => $password]);
+        $stmt = $this->pdo->prepare("INSERT INTO es_user (firstname, lastname, email, password, role) VALUES (:firstname, :lastname, :email, :password, :role)");
+        $stmt->execute(['firstname' => $data['firstname'], 'lastname' => $data['lastname'], 'email' => $data['email'], 'password' => $data['password'], 'role' => $data['role']]);
+    }
+
+    public function updateUser($data) {
+        $stmt = $this->pdo->prepare("UPDATE es_user SET firstname = :firstname, lastname = :lastname, email = :email, password = :password, role = :role WHERE id = :id");
+        $stmt->execute(['firstname' => $data['firstname'], 'lastname' => $data['lastname'], 'email' => $data['email'], 'password' => $data['password'], 'role' => $data['role'], 'id' => $data['user_id']]);
     }
 
     public function getUserById($id){

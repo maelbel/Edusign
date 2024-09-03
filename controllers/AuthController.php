@@ -35,26 +35,27 @@ class AuthController {
                     $_POST['email'],
                     $_POST['password']
                 );
-                header("Location: /edusign/login");
+                require 'views/login_view.php';
             }
         } else {
             $errorMessage = sprintf("Le compte %s n'existe pas",
                 $_POST['email']
             );
-            header("Location: /edusign/login");
+            require 'views/login_view.php';
         }
     }
 
-    // Méthode pour gérer l'inscription
     public function register($data) {
+        $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
         $this->userModel->createUser($data);
+        header("Location: /edusign/accounts");
     }
 
     // Déconnexion de l'utilisateur
     public function logout() {
         session_start();
         session_destroy();
-        header("Location: /edusign/login");
+        header("Location: /edusign/");
         exit();
     }
 }

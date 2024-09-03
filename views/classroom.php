@@ -75,13 +75,13 @@ $classroom = $statement->fetch();
         <script src="./src/js/jquery.js"></script>
         <script src="./src/js/fontawesome/all.min.js"></script>
         <script src="./src/js/global.js"></script>
+        <?php if($_SESSION['role'] == "teacher"): ?>
         <script type="text/javascript">
-            <?php if($_SESSION['role'] == "teacher"): ?>
+            generateQrCode(<?php echo $classroom['id'] ?>)
+            setInterval(function(){
                 generateQrCode(<?php echo $classroom['id'] ?>)
-                setInterval(function(){
-                    generateQrCode(<?php echo $classroom['id'] ?>)
-                }, 5000);
-            <?php endif; ?>
+            }, 5000);
         </script>
+        <?php endif; ?>
     </body>
 </html>

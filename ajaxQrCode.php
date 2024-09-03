@@ -3,7 +3,6 @@ session_start();
 
 include('phpqrcode/qrlib.php');
 
-require 'model/db_connect.php';
 
 $pdo->exec("USE edusign");
 

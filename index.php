@@ -3,11 +3,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require 'config/config.php';   // Charger la configuration de la base de données
+require_once 'config/config.php';   // Charger la configuration de la base de données
 require_once 'router.php';
-require 'autoload.php';        // Charger l'autoload pour les migrations
-require 'controllers/MigrationController.php';  // Charger le contrôleur de migration
-require 'controllers/AuthController.php';
+require_once 'autoload.php';        // Charger l'autoload pour les migrations
+require_once 'controllers/MigrationController.php';  // Charger le contrôleur de migration
 
 // Instancier le contrôleur de migration avec PDO
 $migrationController = new MigrationController($pdo);
@@ -16,6 +15,7 @@ $migrationController = new MigrationController($pdo);
 $migrationController->runMigrations();
 
 if (!isset($_SESSION['user_id'])){
+    session_start();
     require 'views/login_view.php';
 }
 ?>

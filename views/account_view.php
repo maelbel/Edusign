@@ -5,9 +5,9 @@
 
 <div class="row">
     <div class="alert alert-success mb-0" role="alert">
-        <span class="h3">Bonjour <?php echo $user['firstname'].' '.$user['lastname']; ?> !</span>
+        <span class="h3">Bonjour <?php echo $_SESSION['firstname'].' '.$_SESSION['lastname']; ?> !</span>
         <br/>
-        <span class="text-muted">Espace <?php echo $user['role'] ?>
+        <span class="text-muted">Espace <?php echo $_SESSION['role'] ?>
         </span>
     </div>
     <form action="/edusign/logout" method="post" class="p-0 mb-5">
@@ -50,7 +50,7 @@
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier le cours</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form action="controller/modifyClassroom.php" method="POST">
+                                    <form action="/edusign/modifyCourse" method="POST">
                                         <input type="hidden" id="course_id" name="course_id" value="<?php echo $course['id'] ?>">
                                         <div class="modal-body">
                                             <div class="mb-3">
@@ -62,11 +62,10 @@
                                                 <input type="text" class="form-control" id="class" name="class" placeholder="<?php echo $course['room'] ?>">
                                             </div>
                                             <div class="mb-3">
-                                                <?php foreach($users as $user) { 
-                                                        if($user['role'] == "student"){ ?>
-                                                            <input type="checkbox" name="<?php echo $user['id'] ?>" id="<?php echo $user['id'] ?>" <?php echo (in_array($user['id'], explode("-", $course['students_id'])))? 'checked' : '' ?>/>
-                                                            <label for="<?php echo $user['id'] ?>"><?php echo $user['firstname'].' '.$user['lastname'] ?></label>
-                                                <?php }} ?>
+                                                <?php foreach($classes as $class) { ?>
+                                                    <input type="checkbox" name="<?php echo $class['id'] ?>" id="<?php echo $class['id'] ?>" <?php echo (in_array($user['id'], explode("-", $course['students_id'])))? 'checked' : '' ?>/>
+                                                    <label for="<?php echo $class['id'] ?>"><?php echo $class['name']?></label>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                         <div class="modal-footer">

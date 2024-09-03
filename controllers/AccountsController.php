@@ -11,7 +11,7 @@ class AccountsController {
     public function init() {
         session_start();
         if (!isset($_SESSION['user_id'])) {
-            header("Location: /edusign/login");
+            header("Location: /edusign/");
             exit();
         }
         if ($_SESSION['role'] != "admin") {
@@ -28,6 +28,17 @@ class AccountsController {
         } else {
             echo "Utilisateur non trouvé";
         }
+    }
+
+    public function updateUser($data){
+        $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);;
+        $this->user->updateUser($data);
+        header('Location: /edusign/accounts');
+    }
+
+    public function deleteUser($data){
+        $this->user->deleteUserById($data['user_id']);
+        header('Location: /edusign/accounts');
     }
 }
 ?>

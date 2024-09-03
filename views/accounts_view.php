@@ -6,7 +6,7 @@
     ?>
 
     <a class="btn btn-secondary py-0 px-2 mb-3" href="/edusign/account"><i class="fa-solid fa-left-long"></i></a><br/>
-    
+
     <span class="h4">Liste des comptes</span>
     
     <table class="table table-striped table-hover">
@@ -17,8 +17,8 @@
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </th>
-                <th scope="col">Nom</th>
                 <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
                 <th scope="col">Email</th>
                 <th scope="col">Groupe</th>
                 <th scope="col">Action</th>
@@ -33,17 +33,20 @@
                 <td><?php echo $user['email']; ?></td>
                 <td><?php echo $user['role']; ?></td>
                 <td>
-                    <button id="modifyAccountButton" type="button" class="btn btn-primary text-white py-2 px-3" data-bs-toggle="modal" data-bs-target="#modifyAccountModal">
+                    <button id="modifyAccountButton" type="button" class="btn btn-primary text-white py-2 px-3" data-bs-toggle="modal" data-bs-target="#modifyAccountModal<?php echo $user['id']?>">
                         <i class="fa-solid fa-pen"></i>
                     </button>
-                    <a class="btn btn-danger text-white py-2 px-3" href="/edusign/deleteUser?user_id=<?php echo $user['id']?>">
-                        <i class="fa-solid fa-trash"></i>
-                    </a>
+                    <form action="/edusign/deleteUser" method="GET" class="d-inline">
+                        <input type="hidden" id="user_id" name="user_id" value="<?php echo $user['id'] ?>">
+                        <button type="submit" class="btn btn-danger text-white py-2 px-3">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
 
             <!-- Modal -->
-            <div class="modal fade" id="modifyAccountModal" tabindex="-1" aria-labelledby="modifyAccountModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modifyAccountModal<?php echo $user['id']?>" tabindex="-1" aria-labelledby="modifyAccountModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -69,15 +72,15 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Mot de passe</label>
-                                    <input type="password" class="form-control" id="password" name="password" value="<?php echo $user['password'] ?>">
+                                    <input type="password" class="form-control" id="password" name="password">
                                 </div>
                                 <div class="mb-3">
                                     <label for="role">Groupe:</label>
+                                    <?php $plan = array('viewer' => 'Visiteur','student'=>'Étudiant','teacher'=>'Professeur','admin'=>'Administrateur' ); ?>
                                     <select name="role" id="role">
-                                        <option value="viewer">Visiteur</option>
-                                        <option value="student">Étudiant</option>
-                                        <option value="admin">Administrateur</option>
-                                        <option value="teacher">Professeur</option>
+                                        <?php foreach ($plan as $key => $value) { ?>
+                                        <option value="<?php echo $key;?>" <?php echo ($key ==  $user['role']) ? 'selected' : '';?>><?php echo $value;?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -125,8 +128,8 @@
                             <select name="role" id="role">
                                 <option value="viewer">Visiteur</option>
                                 <option value="student">Étudiant</option>
-                                <option value="admin">Administrateur</option>
                                 <option value="teacher">Professeur</option>
+                                <option value="admin">Administrateur</option>
                             </select>
                         </div>
                     </div>

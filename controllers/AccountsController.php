@@ -31,7 +31,7 @@ class AccountsController {
     }
 
     public function updateUser($data){
-        $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);;
+        $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
         $this->user->updateUser($data);
         header('Location: /edusign/accounts');
     }

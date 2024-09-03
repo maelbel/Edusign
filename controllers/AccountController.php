@@ -21,7 +21,6 @@ class AccountController {
         $user = $this->user->getUserById($_SESSION['user_id']);
 
         if ($user) {
-            if ($user['role'] == "admin") $users = $this->user->getAllUsers();
 
             $courses = $this->course->getCoursesByUserId($user['id']);
 

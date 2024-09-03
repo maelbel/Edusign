@@ -12,6 +12,11 @@ class ClassModel {
         $stmt->execute(['name' => $data['name']]);
     }
 
+    public function updateClass($data) {
+        $stmt = $this->pdo->prepare("UPDATE es_class SET name = :name WHERE id = :id");
+        $stmt->execute(['name' => $data['name'], 'id' => $data['class_id']]);
+    }
+
     public function getClassById($id) {
         $stmt = $this->pdo->prepare("SELECT * FROM es_class WHERE id = :id");
         $stmt->execute([':id' => $id]);

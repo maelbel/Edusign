@@ -4,12 +4,22 @@ $routes = [
     'login' => 'AuthController@login',
     'register' => 'AuthController@register',
     'logout' => 'AuthController@logout',
+
     'account' => 'AccountController@init',
+
     'accounts' => 'AccountsController@init',
     'updateUser' => 'AccountsController@updateUser',
     'deleteUser' => 'AccountsController@deleteUser',
+
+    'classes' => 'ClassesController@init',
+    'createClass' => 'ClassesController@createClass',
+    'updateClass' => 'ClassesController@updateClass',
+    'deleteClass' => 'ClassesController@deleteClass',
+
     'courses' => 'CoursesController@init',
-    'classes' => 'ClassesController@init'
+    'createCourse' => 'CoursesController@createCourse',
+    'updateCourse' => 'CoursesController@updateCourse',
+    'deleteCourse' => 'CoursesController@deleteCourse'
 ];
 
 // Obtenir l'URL de la requête

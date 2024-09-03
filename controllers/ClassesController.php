@@ -32,5 +32,20 @@ class ClassesController {
             echo "Utilisateur non trouvé";
         }
     }
+
+    public function createClass($data){
+        $this->class->createClass($data);
+        header('Location: /edusign/classes');
+    }
+
+    public function updateClass($data){
+        $this->class->updateClass($data);
+        header('Location: /edusign/classes');
+    }
+
+    public function deleteClass($data){
+        $this->class->deleteClassById($data['class_id']);
+        header('Location: /edusign/classes');
+    }
 }
 ?>

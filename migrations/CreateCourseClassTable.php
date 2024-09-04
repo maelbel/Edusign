@@ -11,9 +11,11 @@ class CreateCourseClassTable {
         $sql = "CREATE TABLE IF NOT EXISTS es_course_class (
             course_id INT NOT NULL,
             class_id INT NOT NULL,
-            PRIMARY KEY (course_id, class_id),
+            user_id INT NOT NULL,
+            PRIMARY KEY (course_id, class_id, user_id),
             FOREIGN KEY (course_id) REFERENCES es_course(id) ON DELETE CASCADE,
-            FOREIGN KEY (class_id) REFERENCES es_class(id) ON DELETE CASCADE
+            FOREIGN KEY (class_id) REFERENCES es_class(id) ON DELETE CASCADE,
+            FOREIGN KEY (user_id) REFERENCES es_user(id) ON DELETE CASCADE
         ) ENGINE=INNODB;";
         $this->pdo->exec($sql);
     }

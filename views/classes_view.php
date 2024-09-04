@@ -52,6 +52,16 @@
                                 <label for="name" class="form-label">Nom</label>
                                 <input type="text" class="form-control" id="name" name="name" value="<?php echo $class['name'] ?>">
                             </div>
+                            <?php if($students): ?>
+                            <span>Élèves:</span>
+                            <div class="mb-3">
+                                <?php $studentsIdInClass = ClassesController::getClassUser()->getAllStudentsIdByClassId($class['id']); ?>
+                                <?php foreach($students as $student) { ?>
+                                    <input type="checkbox" name="students[]" id="user_id_<?php echo $student['id'] ?>" value="<?php echo $student['id'] ?>" <?php echo in_array($student['id'], $studentsIdInClass)? 'checked' : '' ?>/>
+                                    <label for="user_id_<?php echo $student['id'] ?>"><?php echo $student['firstname'].' '.$student['lastname'] ?></label><br/>
+                                <?php } ?>
+                            </div>
+                            <?php endif; ?>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
@@ -78,6 +88,15 @@
                         <label for="name" class="form-label">Nom</label>
                         <input type="text" class="form-control" id="name" name="name">
                     </div>
+                    <?php if($students): ?>
+                    <span>Élèves:</span>
+                    <div class="mb-3">
+                        <?php foreach($students as $student) { ?>
+                            <input type="checkbox" name="students[]" id="user_id_<?php echo $student['id'] ?>" value="<?php echo $student['id'] ?>"/>
+                            <label for="user_id_<?php echo $student['id'] ?>"><?php echo $student['firstname'].' '.$student['lastname'] ?></label>
+                        <?php } ?>
+                    </div>
+                    <?php endif; ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>

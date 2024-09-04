@@ -34,6 +34,18 @@ class UserModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getAllTeachers(){
+        $stmt = $this->pdo->prepare("SELECT * FROM es_user WHERE role = :role");
+        $stmt->execute([':role' => 'teacher']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getAllStudents(){
+        $stmt = $this->pdo->prepare("SELECT * FROM es_user WHERE role = :role");
+        $stmt->execute([':role' => 'student']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function deleteUserById($id){
         $stmt = $this->pdo->prepare("DELETE FROM es_user WHERE id = :id");
         $stmt->execute(['id' => $id ]);

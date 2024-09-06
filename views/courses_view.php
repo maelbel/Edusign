@@ -72,6 +72,28 @@
                                 <label for="end_date" class="form-label">Date de fin</label>
                                 <input type="datetime-local" class="form-control" id="end_date" name="end_date" value="<?php echo $course['end_date'];?>" step="1800">
                             </div>
+                            <?php if($classes): ?>
+                            <div class="mb-3">
+                                <label for="class" class="form-label">Sélectionnez une classe</label>
+                                <select class="form-select" id="class" name="class" required>
+                                    <option value="">------</option>
+                                    <?php $classIdInCourse = CoursesController::getCourseClass()->getClassIdByCourseId($course['id']); ?>
+                                    <?php foreach($classes as $class) { ?>
+                                        <option value="<?php echo $class['id']?>" <?php echo in_array($class['id'], $classIdInCourse) ? 'selected' : ''?>><?php echo $class['name']?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <?php endif; ?>
+                            <?php if($teachers): ?>
+                            <span>Professeur:</span>
+                            <div class="form-check mb-3">
+                            <?php $teachersIdInClass = CoursesController::getCourseUser()->getAllTeachersIdByCourseId($course['id']); ?>
+                                <?php foreach($teachers as $teacher) { ?>
+                                    <input class="form-check-input" type="checkbox" name="teachers[]" id="user_id_<?php echo $teacher['id'] ?>" value="<?php echo $teacher['id'] ?>" <?php echo in_array($teacher['id'], $teachersIdInClass)? 'checked' : '' ?>/>
+                                    <label class="form-check-label" for="user_id_<?php echo $teacher['id'] ?>"><?php echo $teacher['firstname'].' '.$teacher['lastname'] ?></label>
+                                <?php } ?>
+                            </div>
+                            <?php endif; ?>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
@@ -96,20 +118,40 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="mb-3">
                         <label for="room" class="form-label">Salle</label>
-                        <input type="text" class="form-control" id="room" name="room">
+                        <input type="text" class="form-control" id="room" name="room" required>
                     </div>
                     <div class="mb-3">
                         <label for="start_date" class="form-label">Date de début</label>
-                        <input type="datetime-local" class="form-control" id="start_date" name="start_date" value="<?php echo $time->format('Y-m-d H:i');?>" step="1800">
+                        <input type="datetime-local" class="form-control" id="start_date" name="start_date" value="<?php echo $time->format('Y-m-d H:i');?>" step="1800" required>
                     </div>
                     <div class="mb-3">
                         <label for="end_date" class="form-label">Date de fin</label>
-                        <input type="datetime-local" class="form-control" id="end_date" name="end_date" value="<?php echo $time->modify('+1 hour')->format('Y-m-d H:i');?>" step="1800">
+                        <input type="datetime-local" class="form-control" id="end_date" name="end_date" value="<?php echo $time->modify('+1 hour')->format('Y-m-d H:i');?>" step="1800" required>
                     </div>
+                    <?php if($classes): ?>
+                    <div class="mb-3">
+                        <label for="class" class="form-label">Sélectionnez une classe</label>
+                        <select class="form-select" id="class" name="class" required>
+                            <option value="">------</option>
+                            <?php foreach($classes as $class) { ?>
+                                <option value="<?php echo $class['id']?>"><?php echo $class['name']?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <?php endif; ?>
+                    <?php if($teachers): ?>
+                    <span>Professeur:</span>
+                    <div class="form-check mb-3">
+                        <?php foreach($teachers as $teacher) { ?>
+                            <input class="form-check-input" type="checkbox" name="teachers[]" id="user_id_<?php echo $teacher['id'] ?>" value="<?php echo $teacher['id'] ?>"/>
+                            <label class="form-check-label" for="user_id_<?php echo $teacher['id'] ?>"><?php echo $teacher['firstname'].' '.$teacher['lastname'] ?></label>
+                        <?php } ?>
+                    </div>
+                    <?php endif; ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>

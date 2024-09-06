@@ -1,5 +1,5 @@
 <?php
-class CreateCourseClassTable {
+class CreateCourseUserTable {
     private $pdo;
 
     public function __construct($pdo) {
@@ -8,12 +8,12 @@ class CreateCourseClassTable {
 
     // Créer la table course_class
     public function createTable() {
-        $sql = "CREATE TABLE IF NOT EXISTS es_course_class (
+        $sql = "CREATE TABLE IF NOT EXISTS es_course_user (
             course_id INT NOT NULL,
-            class_id INT NOT NULL,
-            PRIMARY KEY (course_id, class_id),
+            user_id INT NOT NULL,
+            PRIMARY KEY (course_id, user_id),
             FOREIGN KEY (course_id) REFERENCES es_course(id) ON DELETE CASCADE,
-            FOREIGN KEY (class_id) REFERENCES es_class(id) ON DELETE CASCADE
+            FOREIGN KEY (user_id) REFERENCES es_user(id) ON DELETE CASCADE
         ) ENGINE=INNODB;";
         $this->pdo->exec($sql);
     }

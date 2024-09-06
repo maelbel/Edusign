@@ -4,10 +4,11 @@ require_once 'models/ClassModel.php';
 require_once 'models/ClassUserModel.php';
 
 class ClassesController {
+
+    private $pdo;
     private $user;
     private $class;
-    private $classUser;
-    private $pdo;
+    private $classUser;    
 
     public function __construct($pdo) {
         $this->pdo = $pdo;

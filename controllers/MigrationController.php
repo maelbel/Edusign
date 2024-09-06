@@ -15,7 +15,8 @@ class MigrationController {
             'CreateCourseTable',
             'CreatePresenceTable',
             'CreateClassUserTable',
-            'CreateCourseClassTable'
+            'CreateCourseClassTable',
+            'CreateCourseUserTable'
             // Ajoutez ici d'autres migrations comme 'CreateOtherTable'
         ];
     }

@@ -8,6 +8,16 @@ class AuthController {
         $this->userModel = new UserModel($pdo);
     }
 
+    public function init() {
+        session_start();
+        if (isset($_SESSION['user_id'])) {
+            header("Location: /edusign/account");
+            exit();
+        }
+
+        require 'views/auth_view.php';
+    }
+
     // Gère la soumission du formulaire de connexion
     public function login($data) {
         $user = $this->userModel->getUserByEmail($data['email']);
@@ -35,13 +45,13 @@ class AuthController {
                     $_POST['email'],
                     $_POST['password']
                 );
-                require 'views/login_view.php';
+                require 'views/auth_view.php';
             }
         } else {
             $errorMessage = sprintf("Le compte %s n'existe pas",
                 $_POST['email']
             );
-            require 'views/login_view.php';
+            require 'views/auth_view.php';
         }
     }
 
@@ -55,7 +65,7 @@ class AuthController {
     public function logout() {
         session_start();
         session_destroy();
-        header("Location: /edusign/");
+        header("Location: /edusign/auth");
         exit();
     }
 }

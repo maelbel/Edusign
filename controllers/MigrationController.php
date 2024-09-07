@@ -34,8 +34,8 @@ class MigrationController {
             $migrationClass = new $migration($this->pdo);
             $migrationClass->createTable();
 
-            if(method_exists($migration, "insert")){
-
+            if(method_exists($migrationClass, "insert")){
+                $migrationClass->insert();
             }
         }
     }

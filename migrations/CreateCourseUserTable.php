@@ -19,8 +19,8 @@ class CreateCourseUserTable {
     }
 
     public function insert() {
-        $sql = "INSERT INTO es_course_user (course_id, user_id)
-                    SELECT c.course_id, u.user_id
+        $sql = "INSERT IGNORE INTO es_course_user (course_id, user_id)
+                    SELECT c.id, u.id
                     FROM es_course c
                     JOIN es_user u ON u.role = 'teacher'
                     ORDER BY RAND()

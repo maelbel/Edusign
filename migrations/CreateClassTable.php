@@ -16,7 +16,7 @@ class CreateClassTable {
     }
 
     public function insert() {
-        $sql = "INSERT INTO es_class (name) VALUES
+        $sql = "INSERT IGNORE INTO es_class (name) VALUES
                     ('Computer Science'),
                     ('Mechanical Engineering'),
                     ('Business Administration'),

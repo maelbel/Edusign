@@ -20,7 +20,7 @@ class CreateCourseTable {
     }
 
     public function insert() {
-        $sql = "INSERT IGNORE INTO course (name, room, start_date, end_date) VALUES
+        $sql = "INSERT IGNORE INTO es_course (name, room, start_date, end_date) VALUES
                     ('Introduction to Computer Science', '101', '2024-09-06 10:00:00', '2024-09-06 10:30:00'),
                     ('Advanced Mathematics', '102', '2024-09-06 12:30:00', '2024-09-06 13:00:00'),
                     ('Physics I', '203', '2024-09-07 09:00:00', '2024-09-07 09:30:00'),

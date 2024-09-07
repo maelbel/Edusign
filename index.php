@@ -13,9 +13,4 @@ $migrationController = new MigrationController($pdo);
 
 // Exécuter toutes les migrations automatiquement
 $migrationController->runMigrations();
-
-if (!isset($_SESSION['user_id'])){
-    session_start();
-    require 'views/login_view.php';
-}
 ?>

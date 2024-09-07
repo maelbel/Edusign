@@ -1,11 +1,16 @@
 <?php
 // Définir les routes
 $routes = [
+    '' => 'HomeController@init',
+
+    'auth' => 'AuthController@init',
     'login' => 'AuthController@login',
     'register' => 'AuthController@register',
     'logout' => 'AuthController@logout',
 
     'account' => 'AccountController@init',
+
+    'dashboard' => 'DashboardController@init',
 
     'accounts' => 'AccountsController@init',
     'updateUser' => 'AccountsController@updateUser',

@@ -10,7 +10,7 @@ class CreateClassTable {
     public function createTable() {
         $sql = "CREATE TABLE IF NOT EXISTS es_class (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(100) NOT NULL UNIQUE,
+            name VARCHAR(100) NOT NULL UNIQUE
         ) ENGINE=INNODB;";
         $this->pdo->exec($sql);
     }

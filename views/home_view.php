@@ -45,7 +45,7 @@
                     <svg class="bi" width="1em" height="1em"><use xlink:href="#alarm"/></svg>
                 </div>
                 <h3 class="fs-2 text-body-emphasis">Attendance</h3>
-                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <p>Does reporting absences during your training take you an infinite amount of time? Edusign offers you various solutions to automatically report absences. Whether you are in person or remotely, there are solutions for you. All our methods remain certified by the OPCO.</p>
                 <a href="https://edusign.com/fr/gestion-administrative-des-apprenants/" class="icon-link">
                     Discover our attendance solutions
                     <svg class="bi"><use xlink:href="#chevron-right"/></svg>
@@ -56,7 +56,7 @@
                     <svg class="bi" width="1em" height="1em"><use xlink:href="#repeat"/></svg>
                 </div>
                 <h3 class="fs-2 text-body-emphasis">Automate your documents</h3>
-                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <p>Track all your documents on a single platform. Access a history of electronically signed documents in 2 clicks. For your learners, speakers or even business contacts.</p>
                 <a href="https://edusign.com/fr/signature-electronique/" class="icon-link">
                 Automate your document signatures
                     <svg class="bi"><use xlink:href="#chevron-right"/></svg>
@@ -67,7 +67,7 @@
                     <svg class="bi" width="1em" height="1em"><use xlink:href="#pie-chart"/></svg>
                 </div>
                 <h3 class="fs-2 text-body-emphasis">Learning Analysis</h3>
-                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <p>Access all your data with powerful analytics. Real-time, global or per-user analysis. Export all your sheets to .csv, PDF or API in 1 click.</p>
                 <a href="https://edusign.com/fr/features-statistiques/" class="icon-link">
                     Discover the in-depth analysis of statistics
                     <svg class="bi"><use xlink:href="#chevron-right"/></svg>

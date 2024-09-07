@@ -17,5 +17,15 @@ class CreateCourseUserTable {
         ) ENGINE=INNODB;";
         $this->pdo->exec($sql);
     }
+
+    public function insert() {
+        $sql = "INSERT INTO es_course_user (course_id, user_id)
+                    SELECT c.course_id, u.user_id
+                    FROM es_course c
+                    JOIN es_user u ON u.role = 'teacher'
+                    ORDER BY RAND()
+                    LIMIT 2;";
+        $this->pdo->exec($sql);
+    }
 }
 ?>

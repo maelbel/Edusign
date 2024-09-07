@@ -17,5 +17,14 @@ class CreateCourseClassTable {
         ) ENGINE=INNODB;";
         $this->pdo->exec($sql);
     }
+
+    public function insert() {
+        $sql = "INSERT INTO es_course_class (course_id, class_id)
+                    SELECT c.course_id, cl.class_id
+                    FROM es_course c
+                    JOIN es_class cl
+                    ORDER BY RAND();";
+        $this->pdo->exec($sql);
+    }
 }
 ?>

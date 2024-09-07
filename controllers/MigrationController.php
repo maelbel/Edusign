@@ -33,6 +33,10 @@ class MigrationController {
             // Charger la classe dynamiquement et créer la table
             $migrationClass = new $migration($this->pdo);
             $migrationClass->createTable();
+
+            if(method_exists($migration, "insert")){
+
+            }
         }
     }
 }

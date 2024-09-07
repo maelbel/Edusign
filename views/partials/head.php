@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>EduSign</title>
 
+        <link rel="icon" type="image/png" href="src/img/favicon.png">
+
         <!-- CSS -->
         <link href="src/css/fontawesome/fontawesome.css" rel="stylesheet" />
         <link href="src/css/fontawesome/brands.css" rel="stylesheet" />

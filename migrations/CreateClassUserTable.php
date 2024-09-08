@@ -24,7 +24,7 @@ class CreateClassUserTable {
                     FROM es_class c
                     JOIN es_user u ON u.role = 'student'
                     ORDER BY RAND()
-                    LIMIT 20;";
+                    LIMIT 10;";
         $this->pdo->exec($sql);
     }
 }

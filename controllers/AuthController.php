@@ -20,12 +20,14 @@ class AuthController {
 
     // Gère la soumission du formulaire de connexion
     public function login($data) {
+        if(!$data) header("Location: /edusign/auth");
+        
+        session_start();
+
         $user = $this->userModel->getUserByEmail($data['email']);
 
         if ($user) {
-            if(password_verify($data['password'], $user['password'])){
-                // Connexion réussie, démarre la session
-                session_start();
+            if(password_verify($data['password'], $user['password'])) {
                 if (!isset($data['csrf_token']) || $data['csrf_token'] !== $_SESSION['csrf_token']) {
                     echo "Échec de la validation du jeton CSRF.";
                     $errorMessage = sprintf('Échec de la validation du jeton CSRF.');
@@ -42,14 +44,14 @@ class AuthController {
                 header("Location: /edusign/account");
             } else {
                 $errorMessage = sprintf('Votre mot de passe est incorrect : (%s/%s)',
-                    $_POST['email'],
-                    $_POST['password']
+                    $data['email'],
+                    $data['password']
                 );
                 require 'views/auth_view.php';
             }
         } else {
             $errorMessage = sprintf("Le compte %s n'existe pas",
-                $_POST['email']
+                $data['email']
             );
             require 'views/auth_view.php';
         }

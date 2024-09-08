@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-bs-theme="auto">
+<html data-bs-theme="auto" class="h-100">
     <head>
         <script src="src/js/color-modes.js"></script>
         <meta charset="UTF-8">
@@ -9,12 +9,10 @@
         <link rel="icon" type="image/png" href="src/img/favicon.png">
 
         <!-- CSS -->
-        <link href="src/css/fontawesome/fontawesome.css" rel="stylesheet" />
-        <link href="src/css/fontawesome/brands.css" rel="stylesheet" />
-        <link href="src/css/fontawesome/solid.css" rel="stylesheet" />
-
         <link href="src/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="src/css/sticky-footer-navbar.css" rel="stylesheet" />
         <link href="src/css/style.css" rel="stylesheet" />
+
 
         <style>
         .bd-placeholder-img {

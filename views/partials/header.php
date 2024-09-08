@@ -1,5 +1,5 @@
 </head>
-<body cz-shortcut-listen="true">
+<body class="d-flex flex-column h-100" cz-shortcut-listen="true">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -50,19 +50,21 @@
         </li>
       </ul>
     </div>
-    <header class="p-3 text-bg-dark">
+
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-2">
         <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start w-100">
                 <a href="/edusign/" class="d-flex align-items-center me-2 mb-2 mb-lg-0 text-white text-decoration-none">
                   <img class="img-fluid" width="100" src="src/img/logo.png" alt="logo-edusign"/>
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="/edusign/" class="nav-link px-2 text-secondary">Home</a></li>
+                    <li><a href="/edusign/" class="nav-link px-2 <?= ($_SERVER['REQUEST_URI'] == "/edusign/" ? 'text-secondary' : 'text-white') ?>">Home</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                    <li><a href="/edusign/about" class="nav-link px-2 text-white">About</a></li>
                 </ul>
 
                 <div class="text-end">
@@ -78,4 +80,8 @@
                 </div>
             </div>
         </div>
+      </nav>
     </header>
+
+    <main class="flex-shrink-0">
+      <div class="container">

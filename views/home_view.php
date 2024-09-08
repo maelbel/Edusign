@@ -21,60 +21,58 @@
     </symbol>
 </svg>
 
-<main>
-    <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-                <img src="src/img/accueil.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
-            </div>
-            <div class="col-lg-6">
-                <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Edusign</h1>
-                <p class="lead">Automate, digitalize like more than 1,500 training organizations that use Edusign, your management of document signatures, attendance, and muche more.</p>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a href="https://edusign.com/fr/" class="btn btn-primary btn-lg px-4 me-md-2">Learn more</a>
-                    <a href="/edusign/about" class="btn btn-outline-secondary btn-lg px-4">About</a>
-                </div>
+<div class="col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="src/img/accueil.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Edusign</h1>
+            <p class="lead">Automate, digitalize like more than 1,500 training organizations that use Edusign, your management of document signatures, attendance, and muche more.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="https://edusign.com/fr/" class="btn btn-primary btn-lg px-4 me-md-2">Learn more</a>
+                <a href="/edusign/about" class="btn btn-outline-secondary btn-lg px-4">About</a>
             </div>
         </div>
     </div>
-    <div class="container px-4 py-5" id="featured-3">
-        <h2 class="pb-2 border-bottom">The benefits of Edusign</h2>
-        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-            <div class="feature col">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-                    <svg class="bi" width="1em" height="1em"><use xlink:href="#alarm"/></svg>
-                </div>
-                <h3 class="fs-2 text-body-emphasis">Attendance</h3>
-                <p>Does reporting absences during your training take you an infinite amount of time? Edusign offers you various solutions to automatically report absences. Whether you are in person or remotely, there are solutions for you. All our methods remain certified by the OPCO.</p>
-                <a href="https://edusign.com/fr/gestion-administrative-des-apprenants/" class="icon-link">
-                    Discover our attendance solutions
-                    <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-                </a>
+</div>
+<div class="px-4 py-5" id="featured-3">
+    <h2 class="pb-2 border-bottom">The benefits of Edusign</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="feature col">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                <svg class="bi" width="1em" height="1em"><use xlink:href="#alarm"/></svg>
             </div>
-            <div class="feature col">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-                    <svg class="bi" width="1em" height="1em"><use xlink:href="#repeat"/></svg>
-                </div>
-                <h3 class="fs-2 text-body-emphasis">Automate your documents</h3>
-                <p>Track all your documents on a single platform. Access a history of electronically signed documents in 2 clicks. For your learners, speakers or even business contacts.</p>
-                <a href="https://edusign.com/fr/signature-electronique/" class="icon-link">
-                Automate your document signatures
-                    <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-                </a>
+            <h3 class="fs-2 text-body-emphasis">Attendance</h3>
+            <p>Does reporting absences during your training take you an infinite amount of time? Edusign offers you various solutions to automatically report absences. Whether you are in person or remotely, there are solutions for you. All our methods remain certified by the OPCO.</p>
+            <a href="https://edusign.com/fr/gestion-administrative-des-apprenants/" class="icon-link">
+                Discover our attendance solutions
+                <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+            </a>
+        </div>
+        <div class="feature col">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                <svg class="bi" width="1em" height="1em"><use xlink:href="#repeat"/></svg>
             </div>
-            <div class="feature col">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-                    <svg class="bi" width="1em" height="1em"><use xlink:href="#pie-chart"/></svg>
-                </div>
-                <h3 class="fs-2 text-body-emphasis">Learning Analysis</h3>
-                <p>Access all your data with powerful analytics. Real-time, global or per-user analysis. Export all your sheets to .csv, PDF or API in 1 click.</p>
-                <a href="https://edusign.com/fr/features-statistiques/" class="icon-link">
-                    Discover the in-depth analysis of statistics
-                    <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-                </a>
+            <h3 class="fs-2 text-body-emphasis">Automate your documents</h3>
+            <p>Track all your documents on a single platform. Access a history of electronically signed documents in 2 clicks. For your learners, speakers or even business contacts.</p>
+            <a href="https://edusign.com/fr/signature-electronique/" class="icon-link">
+            Automate your document signatures
+                <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+            </a>
+        </div>
+        <div class="feature col">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                <svg class="bi" width="1em" height="1em"><use xlink:href="#pie-chart"/></svg>
             </div>
+            <h3 class="fs-2 text-body-emphasis">Learning Analysis</h3>
+            <p>Access all your data with powerful analytics. Real-time, global or per-user analysis. Export all your sheets to .csv, PDF or API in 1 click.</p>
+            <a href="https://edusign.com/fr/features-statistiques/" class="icon-link">
+                Discover the in-depth analysis of statistics
+                <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+            </a>
         </div>
     </div>
-</main>
+</div>
 
 <?php require 'views/partials/footer.php'; ?>

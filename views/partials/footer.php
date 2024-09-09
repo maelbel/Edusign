@@ -24,8 +24,8 @@
                 </div>
             </footer>
         </div>
-        <script src="./src/js/jquery.js"></script>
-        <script src="./src/js/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="src/js/jquery.js"></script>
+        <script src="src/js/bootstrap/bootstrap.bundle.min.js"></script>
         <script type="text/javascript">
             const myModal = document.getElementById('addClassModal');
             const myInput = document.getElementById('addClassBtn');
@@ -34,5 +34,3 @@
                 myInput.focus();
             })
         </script>
-    </body>
-</html>

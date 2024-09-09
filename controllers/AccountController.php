@@ -21,8 +21,8 @@ class AccountController {
         $user = $this->user->getUserById($_SESSION['user_id']);
 
         if ($user) {
-
-            $courses = $this->course->getCoursesByUserId($user['id']);
+            if($user['role'] == 'student') $courses = $this->course->getCoursesByStudentId($user['id']);
+            if($user['role'] == 'teacher') $courses = $this->course->getCoursesByTeacherId($user['id']);
 
             require 'views/account_view.php';
         } else {

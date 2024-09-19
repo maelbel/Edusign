@@ -29,7 +29,7 @@ class CourseModel {
     }
 
     public function getCoursesByStudentId($user_id) {
-        $stmt = $this->pdo->prepare("SELECT * FROM es_course 
+        $stmt = $this->pdo->prepare("SELECT DISTINCT es_course.id, es_course.name, es_course.room FROM es_course 
                                         INNER JOIN es_course_class 
                                             ON es_course.id = es_course_class.course_id 
                                         INNER JOIN es_class
@@ -44,10 +44,12 @@ class CourseModel {
     }
 
     public function getCoursesByTeacherId($user_id) {
-        $stmt = $this->pdo->prepare("SELECT * FROM es_course 
+        $stmt = $this->pdo->prepare("SELECT es_course.id, es_course.name, es_course.room FROM es_course 
                                         INNER JOIN es_course_user 
-                                            ON es_course.id = es_course_user.user_id 
-                                        WHERE user_id = :user_id");
+                                            ON es_course.id = es_course_user.course_id
+                                        INNER JOIN es_user
+                                            ON es_course_user.user_id = es_user.id
+                                        WHERE es_user.id = :user_id");
         $stmt->execute([':user_id' => $user_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

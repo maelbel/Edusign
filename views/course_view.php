@@ -51,9 +51,9 @@
 
 <script src="src/js/global.js"></script>
 <script type="text/javascript">
-    generateQrCode(<?php echo $course['id'] ?>)
+    generateQrCode("<?php echo $course['id'] ?>")
     // setInterval(function(){
-    //     generateQrCode(<?php echo $course['id'] ?>)
+    //     generateQrCode("<?php echo $course['id'] ?>")
     // }, 5000);
 </script>
 

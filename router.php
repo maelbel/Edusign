@@ -27,7 +27,9 @@ $routes = [
     'courses' => 'CoursesController@init',
     'createCourse' => 'CoursesController@createCourse',
     'updateCourse' => 'CoursesController@updateCourse',
-    'deleteCourse' => 'CoursesController@deleteCourse'
+    'deleteCourse' => 'CoursesController@deleteCourse',
+
+    'presence' => 'PresenceController@init'
 ];
 
 // Obtenir l'URL de la requête

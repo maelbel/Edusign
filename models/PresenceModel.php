@@ -13,14 +13,19 @@ class PresenceModel {
     }
 
     public function updateToken($course_id, $token) {
-        $stmt = $this->pdo->prepare("UPDATE es_presence SET token = :token WHERE course_id = :course_id");
+        $stmt = $this->pdo->prepare("UPDATE es_course SET token = :token WHERE id = :course_id");
         $stmt->execute(['course_id' => $course_id, 'token' => $token]);
     }
 
+    public function updatePresence($user_id, $statut) {
+        $stmt = $this->pdo->prepare("UPDATE es_presence SET statut = :statut WHERE user_id = :user_id");
+        $stmt->execute(['statut' => $statut, 'user_id' => $user_id]);
+    }
+
     public function getTokenByCourseId($course_id) {
-        $stmt = $this->pdo->prepare("SELECT token FROM es_presence WHERE course_id = :cours_id");
+        $stmt = $this->pdo->prepare("SELECT token FROM es_course WHERE id = :course_id");
         $stmt->execute([':course_id' => $course_id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_COLUMN);
     }
 
     public function getAllPresences() {

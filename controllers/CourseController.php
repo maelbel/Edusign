@@ -41,7 +41,7 @@ class CourseController {
 
         $this->presence->updateToken($data['course_id'], $data['token']);
 
-        $lien = '/presence?course_id='.$data['course_id'].'&token='.$data['token'];
+        $lien = 'https://edusign.alwaysdata.net/presence?course_id='.$data['course_id'].'&token='.$data['token'];
         QRcode::png($lien, 'src/img/tmp/qrcode/qrcode-'.$data['token'].'.png'); // On crée notre QR Code
         
         // On supprime l'ancien qrcode

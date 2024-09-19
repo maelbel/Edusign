@@ -23,8 +23,7 @@ class CreateCourseUserTable {
                     SELECT c.id, u.id
                     FROM es_course c
                     JOIN es_user u ON u.role = 'teacher'
-                    ORDER BY RAND()
-                    LIMIT 2;";
+                    ORDER BY RAND()";
         $this->pdo->exec($sql);
     }
 }

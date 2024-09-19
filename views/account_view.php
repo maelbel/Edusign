@@ -11,7 +11,7 @@
     <div class="p-5 mb-4">
         <h1 class="h4">Vos cours</h1>
 
-        <?php if(isset($courses) && count($courses) > 0): ?>
+        <?php if(count($courses) > 0): ?>
         <?php foreach($courses as $course){ ?>
                 <div class="row mb-3">
                     <div class="col-12">

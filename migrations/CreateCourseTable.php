@@ -10,7 +10,7 @@ class CreateCourseTable {
     public function createTable() {
         $sql = "CREATE TABLE IF NOT EXISTS es_course (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(100) NOT NULL,
+            name VARCHAR(100) NOT NULL UNIQUE,
             room VARCHAR(100) NOT NULL,
             token VARCHAR(100),
             start_date DATETIME,

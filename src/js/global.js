@@ -10,7 +10,7 @@ function generateRandomString() {
 }
 
 function generateQrCode(course_id){
-    var token = generateRandomString();
+    let token = generateRandomString();
 
     $.ajax({
         method: "POST",

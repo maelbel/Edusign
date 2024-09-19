@@ -4,7 +4,7 @@ class CourseModel {
 
     public function __construct($pdo) {
         $this->pdo = $pdo;
-        $this->pdo->exec("USE edusign");
+        $this->pdo->exec("USE edusign_database");
     }
 
     public function createCourse($data) {
@@ -28,7 +28,7 @@ class CourseModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getCoursesByUserId($user_id) {
+    public function getCoursesByStudentId($user_id) {
         $stmt = $this->pdo->prepare("SELECT * FROM es_course 
                                         INNER JOIN es_course_class 
                                             ON es_course.id = es_course_class.course_id 
@@ -38,6 +38,15 @@ class CourseModel {
                                             ON es_class.id = es_class_user.class_id
                                         INNER JOIN es_user
                                             ON es_class_user.user_id = es_user.id
+                                        WHERE user_id = :user_id");
+        $stmt->execute([':user_id' => $user_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getCoursesByTeacherId($user_id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM es_course 
+                                        INNER JOIN es_course_user 
+                                            ON es_course.id = es_course_user.user_id 
                                         WHERE user_id = :user_id");
         $stmt->execute([':user_id' => $user_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

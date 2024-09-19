@@ -10,6 +10,9 @@ $routes = [
 
     'account' => 'AccountController@init',
 
+    'course' => 'CourseController@init',
+    'course/qrcode' => 'CourseController@ajax',
+
     'dashboard' => 'DashboardController@init',
 
     'accounts' => 'AccountsController@init',
@@ -28,7 +31,8 @@ $routes = [
 ];
 
 // Obtenir l'URL de la requête
-$requestUri = str_replace('/edusign', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+// $requestUri = str_replace('/edusign', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+$requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
 // Fonction pour exécuter l'action correcte basée sur la requête

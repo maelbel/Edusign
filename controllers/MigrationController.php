@@ -13,10 +13,10 @@ class MigrationController {
             'CreateUserTable',
             'CreateClassTable',
             'CreateCourseTable',
-            'CreatePresenceTable',
             'CreateClassUserTable',
             'CreateCourseClassTable',
-            'CreateCourseUserTable'
+            'CreateCourseUserTable',
+            'CreatePresenceTable',
             // Ajoutez ici d'autres migrations comme 'CreateOtherTable'
         ];
     }
@@ -25,9 +25,9 @@ class MigrationController {
     public function runMigrations() {
         // Créer la base de données
         $db = new Database($this->pdo);
-        $db->createDatabase('edusign');
+        $db->createDatabase('edusign_database');
 
-        $this->pdo->exec("USE edusign");
+        $this->pdo->exec("USE edusign_database");
 
         foreach ($this->migrations as $migration) {
             // Charger la classe dynamiquement et créer la table

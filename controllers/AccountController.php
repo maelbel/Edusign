@@ -14,7 +14,7 @@ class AccountController {
     public function init() {
         session_start();
         if (!isset($_SESSION['user_id'])) {
-            header("Location: /edusign/");
+            header("Location: /");
             exit();
         }
 

@@ -3,7 +3,7 @@ session_start();
 
 require '../model/db_connect.php';
 
-$pdo->exec("USE edusign");
+$pdo->exec("USE edusign_database");
 
 $sqlQuery = 'SELECT * FROM `es_classroom` WHERE id = '.$_REQUEST['c_id'];
 $statement = $pdo->prepare($sqlQuery);

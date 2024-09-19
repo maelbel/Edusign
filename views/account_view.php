@@ -11,16 +11,19 @@
     <div class="p-5 mb-4">
         <h1 class="h4">Vos cours</h1>
 
-        <?php if(count($courses) > 0): ?>
+        <?php if(isset($courses) && count($courses) > 0): ?>
         <?php foreach($courses as $course){ ?>
                 <div class="row mb-3">
                     <div class="col-12">
-                        <a class="btn btn-light text-start w-100" href="./view/classroom.php?c_id=<?php echo $course['id'] ?>">
-                            <div class="col-12">
-                                <div class="h4"><?php echo $course['name']; ?></div>
-                                <span class="text-muted"><?php echo $course['room']; ?></span>
-                            </div>
-                        </a>
+                        <form action="/course" method="GET">
+                            <input type="hidden" name="course_id" id="course_id" value="<?php echo $course['id']; ?>"/>
+                            <button class="btn bg-body-tertiary text-start w-100">
+                                <div class="col-12">
+                                    <div class="h4"><?php echo $course['name']; ?></div>
+                                    <span class="text-secondary"><?php echo $course['room']; ?></span>
+                                </div>
+                            </button>
+                        </form>
                     </div>
                 </div>
         <?php } ?>
@@ -31,3 +34,4 @@
 </div>
 
 <?php require 'views/partials/footer.php'; ?>
+<?php require 'views/partials/foot.php'; ?>

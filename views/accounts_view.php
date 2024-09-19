@@ -46,7 +46,7 @@
                         <button id="modifyAccountButton" type="button" class="btn p-0 me-2" data-bs-toggle="modal" data-bs-target="#modifyAccountModal<?php echo $user['id']?>">
                             <svg class="bi"><use xlink:href="#pen"/></svg>
                         </button>
-                        <form action="/edusign/deleteUser" method="GET" class="d-inline">
+                        <form action="/deleteUser" method="GET" class="d-inline">
                             <input type="hidden" id="user_id" name="user_id" value="<?php echo $user['id'] ?>">
                             <button type="submit" class="btn p-0 me-2">
                                 <svg class="bi"><use xlink:href="#trash"/></svg>
@@ -63,7 +63,7 @@
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier le compte</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="/edusign/updateUser" method="POST">
+                            <form action="/updateUser" method="POST">
                             <input type="hidden" id="user_id" name="user_id" value="<?php echo $user['id'] ?>">
                                 <div class="modal-body">
                                     <div class="row mb-3">
@@ -115,7 +115,7 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Créer un compte</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/edusign/register" method="POST">
+            <form action="/register" method="POST">
                 <div class="modal-body">
                     <div class="row mb-3">
                         <div class="col-6">

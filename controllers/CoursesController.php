@@ -27,11 +27,11 @@ class CoursesController {
     public function init() {
         session_start();
         if (!isset($_SESSION['user_id'])) {
-            header("Location: /edusign/");
+            header("Location: /");
             exit();
         }
         if ($_SESSION['role'] != "admin") {
-            header("Location: /edusign/account");
+            header("Location: /account");
             exit();
         }
 
@@ -77,7 +77,7 @@ class CoursesController {
             }
         }
 
-        header('Location: /edusign/courses');
+        header('Location: /courses');
     }
 
     public function updateCourse($data){
@@ -106,12 +106,12 @@ class CoursesController {
             }
         }
 
-        header('Location: /edusign/courses');
+        header('Location: /courses');
     }
 
     public function deleteCourse($data){
         $this->course->deleteCourseById($data['course_id']);
-        header('Location: /edusign/courses');
+        header('Location: /courses');
     }
 
     public function getCourseClass() {

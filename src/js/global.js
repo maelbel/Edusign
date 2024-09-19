@@ -9,10 +9,14 @@ function generateRandomString() {
     return result;
 }
 
-function generateQrCode(classroom_id){
+function generateQrCode(course_id){
     var token = generateRandomString();
 
-    $.ajax( "../ajaxQrCode.php?c_id=" + classroom_id + "&token=" + token)
+    $.ajax({
+        method: "POST",
+        url: "/course/qrcode",
+        data: { course_id: course_id, token: token }
+      })
         .done(function(res) {
             $('#link-qrcode').attr("href", res);
             $('#qrcode').attr("src", "./src/img/tmp/qrcode/qrcode-" + token + ".png");

@@ -55,27 +55,27 @@
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-2">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start w-100">
-                <a href="/edusign/" class="d-flex align-items-center me-2 mb-2 mb-lg-0 text-white text-decoration-none">
+                <a href="/" class="d-flex align-items-center me-2 mb-2 mb-lg-0 text-white text-decoration-none">
                   <img class="img-fluid" width="100" src="src/img/logo.png" alt="logo-edusign"/>
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="/edusign/" class="nav-link px-2 <?= ($_SERVER['REQUEST_URI'] == "/edusign/" ? 'text-secondary' : 'text-white') ?>">Home</a></li>
+                    <li><a href="/" class="nav-link px-2 <?= ($_SERVER['REQUEST_URI'] == "/" ? 'text-secondary' : 'text-white') ?>">Home</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                    <li><a href="/edusign/about" class="nav-link px-2 text-white">About</a></li>
+                    <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
                 </ul>
 
                 <div class="text-end">
                     <?php if(isset($_SESSION['user_id'])): ?>
-                        <a href="/edusign/account" class="btn btn-primary me-2">My account</a>
+                        <a href="/account" class="btn btn-primary me-2">My account</a>
                         <?php if($_SESSION['role'] == "admin"): ?>
-                            <a href="/edusign/dashboard" class="btn btn-outline-primary me-2">Dashboard</a>
+                            <a href="/dashboard" class="btn btn-outline-primary me-2">Dashboard</a>
                         <?php endif; ?>
-                        <a href="/edusign/logout" class="btn btn-outline-danger me-2">Logout</a>
+                        <a href="/logout" class="btn btn-outline-danger me-2">Logout</a>
                     <?php else: ?>
-                        <a href="/edusign/auth" class="btn btn-outline-primary me-2">Login</a>
+                        <a href="/auth" class="btn btn-outline-primary me-2">Login</a>
                     <?php endif; ?>
                 </div>
             </div>

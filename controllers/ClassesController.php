@@ -20,11 +20,11 @@ class ClassesController {
     public function init() {
         session_start();
         if (!isset($_SESSION['user_id'])) {
-            header("Location: /edusign/");
+            header("Location: /");
             exit();
         }
         if ($_SESSION['role'] != "admin") {
-            header("Location: /edusign/account");
+            header("Location: /account");
             exit();
         }
 
@@ -60,7 +60,7 @@ class ClassesController {
             }
         }
 
-        header('Location: /edusign/classes');
+        header('Location: /classes');
     }
 
     public function updateClass($data){
@@ -78,12 +78,12 @@ class ClassesController {
             }
         }
 
-        header('Location: /edusign/classes');
+        header('Location: /classes');
     }
 
     public function deleteClass($data){
         $this->class->deleteClassById($data['class_id']);
-        header('Location: /edusign/classes');
+        header('Location: /classes');
     }
 
     public function getClassUser(){

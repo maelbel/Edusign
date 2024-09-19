@@ -12,7 +12,7 @@
 ?>
 
 <div class="d-flex align-items-center">
-  <form class="form-signin w-100 m-auto p-5 mt-5 bg-body-tertiary rounded-3" action="/edusign/login" method="POST">
+  <form class="form-signin w-100 m-auto p-5 mt-5 bg-body-tertiary rounded-3" action="/login" method="POST">
     <!-- si message d'erreur on l'affiche -->
     <?php if(isset($errorMessage)) : ?>
     <div class="alert alert-danger" role="alert">
@@ -38,3 +38,4 @@
 </div>
 
 <?php require 'views/partials/footer.php'; ?>
+<?php require 'views/partials/foot.php'; ?>

@@ -48,7 +48,7 @@
                         <button id="modifyCourseButton" type="button" class="btn p-0 me-2" data-bs-toggle="modal" data-bs-target="#modifyCourseModal<?php echo $course['id']?>">
                             <svg class="bi"><use xlink:href="#pen"/></svg>
                         </button>
-                        <form action="/edusign/deleteCourse" method="GET" class="d-inline">
+                        <form action="/deleteCourse" method="GET" class="d-inline">
                             <input type="hidden" id="course_id" name="course_id" value="<?php echo $course['id'] ?>">
                             <button type="submit" class="btn p-0 me-2">
                                 <svg class="bi"><use xlink:href="#trash"/></svg>
@@ -65,7 +65,7 @@
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier le cours</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="/edusign/updateCourse" method="POST">
+                            <form action="/updateCourse" method="POST">
                                 <input type="hidden" id="course_id" name="course_id" value="<?php echo $course['id'] ?>">
                                 <div class="modal-body">
                                     <div class="mb-3">
@@ -98,11 +98,11 @@
                                     <?php endif; ?>
                                     <?php if($teachers): ?>
                                     <span>Professeur:</span>
-                                    <div class="form-check mb-3">
+                                    <div class="mb-3">
                                     <?php $teachersIdInClass = CoursesController::getCourseUser()->getAllTeachersIdByCourseId($course['id']); ?>
                                         <?php foreach($teachers as $teacher) { ?>
-                                            <input class="form-check-input" type="checkbox" name="teachers[]" id="user_id_<?php echo $teacher['id'] ?>" value="<?php echo $teacher['id'] ?>" <?php echo in_array($teacher['id'], $teachersIdInClass)? 'checked' : '' ?>/>
-                                            <label class="form-check-label" for="user_id_<?php echo $teacher['id'] ?>"><?php echo $teacher['firstname'].' '.$teacher['lastname'] ?></label>
+                                            <input type="checkbox" name="teachers[]" id="user_id_<?php echo $teacher['id'] ?>" value="<?php echo $teacher['id'] ?>" <?php echo in_array($teacher['id'], $teachersIdInClass)? 'checked' : '' ?>/>
+                                            <label for="user_id_<?php echo $teacher['id'] ?>"><?php echo $teacher['firstname'].' '.$teacher['lastname'] ?></label>
                                         <?php } ?>
                                     </div>
                                     <?php endif; ?>
@@ -128,7 +128,7 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Créer un cours</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/edusign/createCourse" method="POST">
+            <form action="/createCourse" method="POST">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nom</label>

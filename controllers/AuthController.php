@@ -11,7 +11,7 @@ class AuthController {
     public function init() {
         session_start();
         if (isset($_SESSION['user_id'])) {
-            header("Location: /edusign/account");
+            header("Location: /account");
             exit();
         }
 
@@ -20,7 +20,7 @@ class AuthController {
 
     // Gère la soumission du formulaire de connexion
     public function login($data) {
-        if(!$data) header("Location: /edusign/auth");
+        if(!$data) header("Location: /auth");
         
         session_start();
 
@@ -31,7 +31,7 @@ class AuthController {
                 if (!isset($data['csrf_token']) || $data['csrf_token'] !== $_SESSION['csrf_token']) {
                     echo "Échec de la validation du jeton CSRF.";
                     $errorMessage = sprintf('Échec de la validation du jeton CSRF.');
-                    header("Location: /edusign/login");
+                    header("Location: /login");
                     exit();
                 }
                 $_SESSION = [
@@ -41,7 +41,7 @@ class AuthController {
                     'lastname' => $user['lastname'],
                     'role' => $user['role']
                 ];
-                header("Location: /edusign/account");
+                header("Location: /account");
             } else {
                 $errorMessage = sprintf('Votre mot de passe est incorrect : (%s/%s)',
                     $data['email'],
@@ -60,14 +60,14 @@ class AuthController {
     public function register($data) {
         $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
         $this->userModel->createUser($data);
-        header("Location: /edusign/accounts");
+        header("Location: /accounts");
     }
 
     // Déconnexion de l'utilisateur
     public function logout() {
         session_start();
         session_destroy();
-        header("Location: /edusign/auth");
+        header("Location: /auth");
         exit();
     }
 }

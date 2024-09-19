@@ -1,8 +1,7 @@
 <?php
 
-$host = 'localhost'; // Adresse de votre serveur MySQL
-$user = 'root';
-$pass = '';
+require_once 'secret.php';
+
 $charset = 'utf8';
 
 try {

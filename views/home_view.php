@@ -31,7 +31,7 @@
             <p class="lead">Automate, digitalize like more than 1,500 training organizations that use Edusign, your management of document signatures, attendance, and muche more.</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                 <a href="https://edusign.com/fr/" class="btn btn-primary btn-lg px-4 me-md-2">Learn more</a>
-                <a href="/edusign/about" class="btn btn-outline-secondary btn-lg px-4">About</a>
+                <a href="/about" class="btn btn-outline-secondary btn-lg px-4">About</a>
             </div>
         </div>
     </div>
@@ -76,3 +76,4 @@
 </div>
 
 <?php require 'views/partials/footer.php'; ?>
+<?php require 'views/partials/foot.php'; ?>

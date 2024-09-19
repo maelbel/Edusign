@@ -95,7 +95,7 @@
   </svg>
 
   <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="/edusign/">Edusign</a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="/">Edusign</a>
 
     <ul class="navbar-nav flex-row d-md-none">
       <li class="nav-item text-nowrap">
@@ -126,32 +126,32 @@
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2 <?= ($_SERVER['REQUEST_URI'] == '/edusign/dashboard' ? 'active' : '') ?>" aria-current="page" href="/edusign/dashboard">
-                <svg class="bi"><?= ($_SERVER['REQUEST_URI'] == '/edusign/dashboard' ? '<use xlink:href="#house-fill"/>' : '<use xlink:href="#house"/>') ?></svg>
+              <a class="nav-link d-flex align-items-center gap-2 <?= ($_SERVER['REQUEST_URI'] == '/dashboard' ? 'active' : '') ?>" aria-current="page" href="/dashboard">
+                <svg class="bi"><?= ($_SERVER['REQUEST_URI'] == '/dashboard' ? '<use xlink:href="#house-fill"/>' : '<use xlink:href="#house"/>') ?></svg>
                 Dashboard
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2 <?= ($_SERVER['REQUEST_URI'] == '/edusign/accounts' ? 'active' : '') ?>" href="/edusign/accounts">
-                <svg class="bi"><?= ($_SERVER['REQUEST_URI'] == '/edusign/accounts' ? '<use xlink:href="#person-fill"/>' : '<use xlink:href="#person"/>') ?></svg>
+              <a class="nav-link d-flex align-items-center gap-2 <?= ($_SERVER['REQUEST_URI'] == '/accounts' ? 'active' : '') ?>" href="/accounts">
+                <svg class="bi"><?= ($_SERVER['REQUEST_URI'] == '/accounts' ? '<use xlink:href="#person-fill"/>' : '<use xlink:href="#person"/>') ?></svg>
                 Users
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2 <?= ($_SERVER['REQUEST_URI'] == '/edusign/classes' ? 'active' : '') ?>" href="/edusign/classes">
-                <svg class="bi"><?= ($_SERVER['REQUEST_URI'] == '/edusign/classes' ? '<use xlink:href="#people-fill"/>' : '<use xlink:href="#people"/>') ?></svg>
+              <a class="nav-link d-flex align-items-center gap-2 <?= ($_SERVER['REQUEST_URI'] == '/classes' ? 'active' : '') ?>" href="/classes">
+                <svg class="bi"><?= ($_SERVER['REQUEST_URI'] == '/classes' ? '<use xlink:href="#people-fill"/>' : '<use xlink:href="#people"/>') ?></svg>
                 Classes
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2 <?= ($_SERVER['REQUEST_URI'] == '/edusign/courses' ? 'active' : '') ?>" href="/edusign/courses">
-                <svg class="bi"><?= ($_SERVER['REQUEST_URI'] == '/edusign/courses' ? '<use xlink:href="#clock-fill"/>' : '<use xlink:href="#clock"/>') ?></svg>
+              <a class="nav-link d-flex align-items-center gap-2 <?= ($_SERVER['REQUEST_URI'] == '/courses' ? 'active' : '') ?>" href="/courses">
+                <svg class="bi"><?= ($_SERVER['REQUEST_URI'] == '/courses' ? '<use xlink:href="#clock-fill"/>' : '<use xlink:href="#clock"/>') ?></svg>
                 Courses
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2 <?= ($_SERVER['REQUEST_URI'] == '/edusign/integrations' ? 'active' : '') ?>" href="#">
-                <svg class="bi"><?= ($_SERVER['REQUEST_URI'] == '/edusign/integrations' ? '<use xlink:href="#puzzle-fill"/>' : '<use xlink:href="#puzzle"/>') ?></svg>
+              <a class="nav-link d-flex align-items-center gap-2 <?= ($_SERVER['REQUEST_URI'] == '/integrations' ? 'active' : '') ?>" href="#">
+                <svg class="bi"><?= ($_SERVER['REQUEST_URI'] == '/integrations' ? '<use xlink:href="#puzzle-fill"/>' : '<use xlink:href="#puzzle"/>') ?></svg>
                 Integrations
               </a>
             </li>
@@ -167,7 +167,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="/edusign/logout">
+              <a class="nav-link d-flex align-items-center gap-2" href="/logout">
                 <svg class="bi"><use xlink:href="#door-closed"/></svg>
                 Logout
               </a>

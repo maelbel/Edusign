@@ -40,7 +40,7 @@
                         <button id="modifyClassButton" type="button" class="btn p-0 me-2" data-bs-toggle="modal" data-bs-target="#modifyClassModal<?php echo $class['id']?>">
                             <svg class="bi"><use xlink:href="#pen"/></svg>
                         </button>
-                        <form action="/edusign/deleteClass" method="GET" class="d-inline">
+                        <form action="/deleteClass" method="GET" class="d-inline">
                             <input type="hidden" id="class_id" name="class_id" value="<?php echo $class['id'] ?>">
                             <button type="submit" class="btn p-0 me-2">
                                 <svg class="bi"><use xlink:href="#trash"/></svg>
@@ -57,7 +57,7 @@
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier la classe</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="/edusign/updateClass" method="POST">
+                            <form action="/updateClass" method="POST">
                             <input type="hidden" id="class_id" name="class_id" value="<?php echo $class['id'] ?>">
                                 <div class="modal-body">
                                     <div class="row mb-3">
@@ -96,7 +96,7 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Créer une classe</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/edusign/createClass" method="POST">
+            <form action="/createClass" method="POST">
                 <div class="modal-body">
                     <div class="row mb-3">
                         <label for="name" class="form-label">Nom</label>

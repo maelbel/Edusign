@@ -4,7 +4,7 @@ class CourseUserModel {
 
     public function __construct($pdo) {
         $this->pdo = $pdo;
-        $this->pdo->exec("USE edusign");
+        $this->pdo->exec("USE edusign_database");
     }
 
     public function createCourseUser($course_id, $user_id) {
